@@ -34,24 +34,38 @@ public class FracCalc {
     			i++;
     		}
     	}
-		return secondFrac;
+//    	secondFrac = seperateFrac(secondFrac);
+//		return secondFrac;
+    	return seperateFrac(secondFrac);
     }
-//    public static String seperateFrac (String frac) {
-//    	String numerator = "";
-//    	String denominator = "";
-//    	String whole = "";
-//    	int i = 0;
-//    	while (numerator =="") {
-//    		if (frac.charAt(i)== ('_')) {
-//    			whole = frac.substring(0, i);
-//    		}
-//    		else {
-//    			if (i < frac.length()) {
-//    				i++;
-//    			}
-//    			else {
-//    				whole
-//    		}
+    public static String seperateFrac (String frac) {
+    	int numerator = 0;
+    	int denominator = 1;
+    	int whole = 0;
+    	int i = 0;
+    	int j = 0;
+    	while (whole==0 && i < frac.length()) {
+    		if (frac.charAt(i)== ('_')) {
+    			whole = Integer.parseInt(frac.substring(0, i));
+    		}
+    		i++;
+    	}
+    	if (i == frac.length()) {
+    		i = 0;
+    	}
+//    	if (i == frac.length()) {
+//    		whole = Integer.parseInt(frac.substring(0,i));
 //    	}
-//    }
+    	while (numerator== 0 && j < frac.length()) {
+    		if (frac.charAt(j)== ('/')) {
+    			numerator = Integer.parseInt(frac.substring(i, j));
+    			denominator = Integer.parseInt(frac.substring(j+1, frac.length()));
+    		}
+    		j++;
+    	}
+    	if (j ==frac.length()) {
+    		whole = Integer.parseInt(frac.substring(0, frac.length()));
+    	}
+    	return ("whole:"+whole+ " numerator:"+ numerator + " denominator:"+ denominator);
+    }
 }
